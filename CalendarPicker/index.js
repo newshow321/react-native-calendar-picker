@@ -107,6 +107,11 @@ export default class CalendarPicker extends Component {
       minMaxDates.maxDate = this.props.maxDate && moment(this.props.maxDate);
     }
 
+    if (prevProps.customDatesStyles !== this.props.customDatesStyles) {
+      // Update renderMonthParams on customDatesStyles change
+      doStateUpdate = true;
+    }
+
     if (doStateUpdate) {
       const newState = {
         ...newStyles,
@@ -235,7 +240,7 @@ export default class CalendarPicker extends Component {
     const date = moment({ year, month, day, hour: 12 });
 
     if (allowRangeSelection && prevSelectedStartDate && !prevSelectedEndDate) {
-      if (date.isSameOrAfter(prevSelectedStartDate, 'day')) {
+      if (date.isAfter(prevSelectedStartDate, 'day')) {
         const selectedStartDate = prevSelectedStartDate;
         const selectedEndDate = date;
         this.setState({
@@ -272,7 +277,7 @@ export default class CalendarPicker extends Component {
         onDateChange(this.state.selectedStartDate, Utils.START_DATE);
         if (syncEndDate) {
           // sync end date with parent - must be cleared if previously set.
-          onDateChange(null, Utils.END_DATE);
+          // onDateChange(null, Utils.END_DATE);
         }
       });
     }

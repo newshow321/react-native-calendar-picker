@@ -26,7 +26,7 @@ export default function Weekdays(props) {
   }
 
   return (
-    <View style={[styles.dayLabelsWrapper, dayLabelsWrapper]}>
+    <View style={[styles.dayLabelsWrapper, dayLabelsWrapper, {borderTopWidth: 0, borderBottomWidth: 0}]}>
       { wd.map((day, key) => {
         const dayOfWeekTextStyle = [styles.dayLabels, textStyle];
         let customDayOfWeekStyles = {};
@@ -36,8 +36,8 @@ export default function Weekdays(props) {
           dayOfWeekTextStyle.push(customDayOfWeekStyles.textStyle);
         }
         return (
-          <View style={customDayOfWeekStyles.style} key={key}>
-            <Text style={dayOfWeekTextStyle}>
+          <View style={[customDayOfWeekStyles.style]} key={key}>
+            <Text style={[...dayOfWeekTextStyle, {fontSize: 11, lineHeight: 20, fontFamily: 'CircularStd-Bold', color: '#2F3C65', letterSpacing: 0.12}]}>
               {day}
             </Text>
           </View>

@@ -160,11 +160,13 @@ export function makeStyles(params) {
 
     previousContainer: {
       marginLeft: 10*scaler,
+      opacity: 0.5,
     },
 
     nextContainer: {
-      marginRight: 10*scaler,
+      marginRight: 15*scaler,
       alignItems: 'flex-end',
+      opacity: 0.5
     },
 
     navButtonText: {
